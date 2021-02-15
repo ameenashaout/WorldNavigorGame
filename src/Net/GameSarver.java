@@ -42,12 +42,7 @@ public class GameSarver extends Thread {
                 }
                 alreadyConnected = true;
             } else {
-                // relay to the current connected player that there is a new
-                // player
                 sendData(packet.getData(), p.ipAddress, p.port);
-
-                // relay to the new player that the currently connect player
-                // exists
                 packet = new Packet00Login(p.getUsername(), p.x, p.y);
                 sendData(packet.getData(), player.ipAddress, player.port);
             }
@@ -70,7 +65,6 @@ public class GameSarver extends Thread {
 
     private void parsePacket(byte[] data, InetAddress address, int port) {
         String massage=new String(data).trim();
-        Handler handler=new Handler();
         Packet.packetTypes type= Packet.lookupPacket(massage.substring(0,2));
         Packet packet1 = null;
       switch (type) {
@@ -97,6 +91,7 @@ public class GameSarver extends Thread {
         public void removeConnection(Packet01Disconnect packet) {
         this.connectedPlayers.remove(getPlayerMPIndex(packet.getUsername()));
         packet.writeData(this);
+        socket.close();
           }
 
        public playerMp getPlayerMP(String username) {

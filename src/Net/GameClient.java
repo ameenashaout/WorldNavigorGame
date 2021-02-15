@@ -81,9 +81,4 @@ public class GameClient extends Thread{
         playerMp player = new playerMp( 400, 600,32,32,true,Id.Player , address, port,packet.getUserName());
         gameMain.handler.addEntity(player);
     }
-
-   // private void handleMove(Packet02Move packet) {
-     //   this.gameMain.movePlayer(packet.getUsername(), packet.getX(), packet.getY(), packet.getNumSteps(),
-       //         packet.isMoving(), packet.getMovingDir());
-    //}
 }

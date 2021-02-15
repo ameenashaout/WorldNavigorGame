@@ -10,8 +10,14 @@ import WorldNavigator.Id;
 import java.awt.*;
 
 public class Player extends Entity {
-public String username;
-    public Player(int x, int y, int height, int width, boolean solid, Id id, Handler handler,String username) {
+public static String username;
+public static int coinp =GameMain.coins;
+
+    public static int getCoinp() {
+        return coinp;
+    }
+
+    public Player(int x, int y, int height, int width, boolean solid, Id id, Handler handler, String username) {
         super(x, y, height, width, solid, id, handler);
         this.username=username;
     }
@@ -54,10 +60,7 @@ public String username;
             x=tile.getX()-tile.width;
         }
     }
-//if (GameMain.restarted == false) {
-    //Packet02Move packet = new Packet02Move(this.getUsername(), this.x, this.y);
-  //  packet.writeData(GameMain.game.clientpocket);
-//}
+
     if (getBoundTop().intersects(tile.getBounds())&& tile.getId()==Id.coins){
         GameMain.coins++;
         tile.die();
@@ -77,7 +80,8 @@ public String username;
 
        }
     }
-    public String getUsername() {
-        return this.username;
+    public static String getUsername() {
+        return username;
     }
+
 }

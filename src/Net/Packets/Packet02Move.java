@@ -26,9 +26,6 @@ public class Packet02Move extends Packet{
         this.username = username;
         this.x = x;
         this.y = y;
-        //this.numSteps = numSteps;
-        //this.isMoving = isMoving;
-        //this.movingDir = movingDir;
     }
 
 

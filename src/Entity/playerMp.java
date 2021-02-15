@@ -1,5 +1,7 @@
 package Entity;
 
+import Title.Tile;
+import WorldNavigator.GameMain;
 import WorldNavigator.Handler;
 import WorldNavigator.Id;
 
@@ -25,5 +27,12 @@ public class playerMp extends Player{
     @Override
     public void tick(){
         super.tick();
-    }
+        for (int i=0;i<handler.tiles.size();i++){
+            Tile tile=handler.tiles.get(i);
+        if (getBoundTop().intersects(tile.getBounds())&& tile.getId()==Id.Player){
+            if (GameMain.coins> Player.getCoinp())
+            tile.die();
+            else handler.removePlayerMp(Player.getUsername());
+        }
+    }}
 }

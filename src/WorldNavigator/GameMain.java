@@ -98,7 +98,7 @@ public class GameMain extends Canvas implements Runnable{
         player = new playerMp( 400, 600,32,32,true, Id.Player,
                 null, -1, JOptionPane.showInputDialog(this, "Please enter a username"));
       handler.addEntity(new Player(300,800,32,32,true,Id.Player,handler,player.getUsername()));
-//handler.addEntity(player);
+
         System.out.println(player.getUsername());
         if (!isApplet) {
             Packet00Login loginPacket = new Packet00Login(player.getUsername(), player.x, player.y);
@@ -167,7 +167,6 @@ public class GameMain extends Canvas implements Runnable{
             frames++;
             if(System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-              //  System.out.println(frames + " Frames per second " + ticks + " Updates for Second");
                 frames = 0;
                 ticks = 0;
             }
@@ -189,12 +188,7 @@ public class GameMain extends Canvas implements Runnable{
          if (restarted==true){timerGame.stop1();}
          else
          {timerGame.start();}
-         //int xOffset = player.x - (SCREEN_WIDTH / 2);
-        // int yOffset = player.y - (SCREEN_HEIGHT / 2);
-        // for (int y = (yOffset >> 3); y < (yOffset + SCREEN_HEIGHT>> 3) + 1; y++) {
-          //   for (int x = (xOffset >> 3); x < (xOffset + SCREEN_WIDTH >> 3) + 1; x++) {
-           //      player.
-         //}
+
          timerGame.timerGraphics();
          graphics.drawImage(coinGraph.getImage(),50,20,64,64,null);
          graphics.setColor(Color.white);
@@ -216,7 +210,7 @@ public class GameMain extends Canvas implements Runnable{
 
       handler.render(graphics);
     }
-     //else if (!playing&&win==false) launcher.render(graphics);
+
       else if (timerGame.getMinutes()>=2&&win==false){
            timerGame.stop1();
            timerGame.getTimeLabel().setVisible(false);
@@ -232,8 +226,7 @@ public class GameMain extends Canvas implements Runnable{
         graphics.setColor(Color.white);
         graphics.setFont(new Font("Courier",Font.BOLD,35));
         graphics.drawString("x"+coins,430,460);
-       //  Packet01Disconnect diPacket1 = new Packet01Disconnect(diPacket.readData((byte[]) clientpocket));
-       // sarverPocket.removeConnection(diPacket1);
+
        }
         graphics.dispose();
         bs.show();
